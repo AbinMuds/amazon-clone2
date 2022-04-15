@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 import "./CheckoutProduct.css";
 
 function CheckoutProduct(props) {
+  const cartCtx = useContext(CartContext);
+  const removeFromBasket = (id) => {
+    cartCtx.removeAllItem(id);
+  };
   return (
     <div className="checkoutProduct" key={props.id}>
       <img className="checkoutProduct_image" src={props.image} alt="" />
@@ -21,6 +27,10 @@ function CheckoutProduct(props) {
         </div>
         <button onClick={props.onRemove}>−</button>
         <button onClick={props.onAdd}>+</button>
+        <p></p>
+        <button onClick={removeFromBasket.bind(null, props.id)}>
+          Remove from basket
+        </button>
       </div>
     </div>
   );

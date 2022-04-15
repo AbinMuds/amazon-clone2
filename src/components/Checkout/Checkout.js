@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import CartContext from "../../store/cart-context";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Checkout.css";
+import Subtotal from "./SubTotal";
 
 function Checkout() {
   const cartCtx = useContext(CartContext);
 
   const cartItemRemoveHandler = (id) => {
-    console.log(id);
     cartCtx.removeItem(id);
   };
 
@@ -42,7 +42,9 @@ function Checkout() {
           ))}
         </div>
       </div>
-      <div className="checkout__right">{cartCtx.totalAmount}</div>
+      <div className="checkout__right">
+        <Subtotal />
+      </div>
     </div>
   );
 }

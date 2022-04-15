@@ -27,7 +27,6 @@ const cartReducer = (state, action) => {
       updatedItems = state.items.concat(action.item);
     }
 
-    console.log(updatedItems);
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -38,8 +37,6 @@ const cartReducer = (state, action) => {
     const existingItemCartIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
-
-    console.log(existingItemCartIndex);
 
     const existingItem = state.items[existingItemCartIndex];
     const updatedTotalAmount = state.totalAmount - existingItem.price;
@@ -52,7 +49,24 @@ const cartReducer = (state, action) => {
       updatedItems[existingItemCartIndex] = updatedItem;
     }
 
-    console.log("uPI" + updatedItems);
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
+  if (action.type === "REMOVEALL") {
+    const existingItemCartIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+
+    const existingItem = state.items[existingItemCartIndex];
+    const updatedTotalAmount =
+      state.totalAmount - existingItem.price * existingItem.amount;
+    let updatedItems;
+    if (existingItem) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    }
 
     return {
       items: updatedItems,
@@ -76,11 +90,16 @@ function CartProvider(props) {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  const removeAllItemHandler = (id) => {
+    dispatchCartAction({ type: "REMOVEALL", id: id });
+  };
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    removeAllItem: removeAllItemHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>

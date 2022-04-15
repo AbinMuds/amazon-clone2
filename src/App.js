@@ -2,6 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "./components/header/Layout";
 import Home from "./pages/Home";
 import CheckoutPage from "./pages/CheckoutPage";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         </Route>
         <Route path="/checkout">
           <CheckoutPage />
+        </Route>
+        <Route path="/auth">
+          <AuthPage />
         </Route>
       </Switch>
     </Layout>

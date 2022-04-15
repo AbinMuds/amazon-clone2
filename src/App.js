@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/header/Layout";
 import Home from "./pages/Home";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -16,6 +16,9 @@ function App() {
         </Route>
         <Route path="/auth">
           <AuthPage />
+        </Route>
+        <Route path="*">
+          <Redirect to="/" />
         </Route>
       </Switch>
     </Layout>

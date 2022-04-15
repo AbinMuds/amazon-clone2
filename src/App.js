@@ -8,7 +8,7 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/amazon-clone2" exact>
           <Home />
         </Route>
         <Route path="/checkout">

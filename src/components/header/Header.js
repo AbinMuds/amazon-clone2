@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/amazon-clone2">
         <img
           className="header_logo"
           src="https://png2png.com/wp-content/uploads/2021/08/images-9.png"

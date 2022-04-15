@@ -1,13 +1,17 @@
 import { Route, Switch } from "react-router-dom";
 import Layout from "./components/header/Layout";
-import HomePage from "./components/home/HomePage";
+import Home from "./pages/Home";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
     <Layout>
       <Switch>
-        <Route to="/">
-          <HomePage />
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/checkout">
+          <CheckoutPage />
         </Route>
       </Switch>
     </Layout>

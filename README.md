@@ -1,3 +1,3 @@
-![alt text][./public/1.png]
-![alt text][./public/2.png]
-![alt text][./public/3.png]
+![Homepage][1.png]
+![Login][2.png]
+![CheckoutPage][3.png]
